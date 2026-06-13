@@ -269,25 +269,76 @@ progress {
 
 .song-card {
   flex: 1;
-  min-height: 9rem;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 1rem;
-  transition: border-color 0.15s, transform 0.05s;
+  overflow: hidden;
+  transition: border-color 0.15s;
 }
 
 .song-card:hover {
   border-color: var(--accent);
 }
 
-.song-card:active {
+.song-pick {
+  flex: 1;
+  min-height: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  padding: 1rem;
+  transition: transform 0.05s;
+}
+
+.song-pick:active {
   transform: scale(0.98);
+}
+
+.song-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+
+.preview-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.preview-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.service-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.service-links a {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+
+.service-links a:hover {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
 .song-title {
