@@ -301,6 +301,14 @@ progress {
   transform: scale(0.98);
 }
 
+.song-art {
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .song-actions {
   display: flex;
   flex-direction: column;
