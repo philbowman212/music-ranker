@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { albumArtUrl } from '../preview/art.ts'
 import { fetchPreviewUrl } from '../preview/itunes.ts'
 import { serviceLinks } from '../preview/links.ts'
 import { applyChoice, canUndo, evaluate, undo, type ChoiceTag } from '../ranking/engine.ts'
@@ -126,6 +127,7 @@ export function RankingScreen({ session, onChange, onComplete, onHome }: Props) 
       <p className="muted">Which song do you prefer?</p>
       <div className="matchup">
         <SongCard
+          key={a.id}
           song={a}
           artist={session.artist.name}
           preview={preview?.songId === a.id ? preview.status : null}
@@ -134,6 +136,7 @@ export function RankingScreen({ session, onChange, onComplete, onHome }: Props) 
         />
         <span className="vs">vs</span>
         <SongCard
+          key={b.id}
           song={b}
           artist={session.artist.name}
           preview={preview?.songId === b.id ? preview.status : null}
@@ -187,6 +190,15 @@ function SongCard({ song, artist, preview, onPick, onPreview }: SongCardProps) {
   return (
     <div className="song-card">
       <button className="song-pick" onClick={onPick}>
+        <img
+          className="song-art"
+          src={albumArtUrl(song.releaseGroupId)}
+          alt=""
+          loading="lazy"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none'
+          }}
+        />
         <span className="song-title">{song.title}</span>
         <span className="song-album">{song.albumTitle}</span>
       </button>
