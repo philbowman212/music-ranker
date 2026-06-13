@@ -66,7 +66,7 @@ async function fetchWithRetry(url: string, signal?: AbortSignal): Promise<unknow
         await sleep(RETRY_DELAYS_MS[attempt], signal)
         continue
       }
-      throw new MbError('network', `MusicBrainz request failed: ${String(err)}`)
+      throw new MbError('network', "Couldn't reach MusicBrainz — check your connection and retry.")
     }
 
     if (response.status === 503 || response.status === 429) {
